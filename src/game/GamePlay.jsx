@@ -53,6 +53,10 @@ function GamePlay({difficulty, highScore, onSwitchScene, onScoreUpdate}){
                     <p className='display'><span className="label">Your Score:</span> <span className="value">{score}</span></p>
                     <p className='display'><span className="label">High Score:</span> <span className="value">{highScore}</span></p>
                 </div>
+                <div className='button-panel horizontal-panel'>
+                    <button onClick={() => onSwitchScene(SCENES.GAMEPLAY)}>Retry</button>
+                    <button onClick={() => onSwitchScene(SCENES.MENU)}>Return to menu</button>
+                </div>
             </header>
             <div className='cards-container'>
                 {
@@ -61,10 +65,11 @@ function GamePlay({difficulty, highScore, onSwitchScene, onScoreUpdate}){
                     })
                 }
             </div>
-            <Modal open={gameOverData.isGameOver}>
-                <h2 className={gameOverData? 'victory-dialog': 'defeat-dialog'}>{gameOverData.message}</h2>
-                <p>Your score: {score}</p>
-                <p>High score: {highScore}</p>
+            <Modal title={gameOverData.message} open={gameOverData.isGameOver}>
+                <div className="display-panel horizontal-panel">
+                    <p className='display'><span className="label">Your Score:</span> <span className="value">{score}</span></p>
+                    <p className='display'><span className="label">High Score:</span> <span className="value">{highScore}</span></p>
+                </div>
                 <div className='button-panel horizontal-panel'>
                     <button onClick={() => onSwitchScene(SCENES.GAMEPLAY)}>Retry</button>
                     <button onClick={() => onSwitchScene(SCENES.MENU)}>Return to menu</button>

@@ -1,0 +1,36 @@
+.popup-panel{
+    margin: auto;
+
+    width: min(100%, 400px);
+
+    padding: var(--space-medium);
+
+    border-radius: var(--radius-small);
+}
+
+.popup-container{
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-container p{
+    margin-bottom: var(--space-medium);
+}
+
+dialog::backdrop{
+    backdrop-filter: blur(5px);
+}
+
+.popup-title{
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-semi);
+
+    margin-bottom: var(--space-medium);
+
+    border-bottom: 2px solid var(--color-neutral-200) ;
+}

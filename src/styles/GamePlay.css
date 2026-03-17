@@ -1,8 +1,3 @@
-.display-panel{
-    margin-left: auto;
-    padding: var(--space-medium);
-}
-
 .main-container.gameplay-container{
     display: flex;
     flex-direction: column;

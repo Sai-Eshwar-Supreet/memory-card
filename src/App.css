@@ -1,20 +1,21 @@
 .button-panel{
-    gap: var(--space-medium);
     width: min(100%, 250px);
+
+    justify-content: center;
 }
 
 .vertical-panel{
     display: flex;
     flex-direction: column;
 
-    gap: var(--space-small);
+    gap: var(--space-medium);
 }
 
 .horizontal-panel{
     display: flex;
     flex-direction: row;
 
-    gap: var(--space-small);
+    gap: var(--space-medium);
 }
 
 .main-container{
@@ -24,4 +25,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+select, button{
+    padding: var(--space-small);
+    text-align: center;
+
+    border:none;
+    border-radius: var(--radius-small);
+
+    box-shadow: var(--shadow-lift-regular);
+
+    min-height: 50px;
+}
+
+button.cta.primary{
+    background-color: var(--color-accent);
+    color: var(--color-neutral-100);
 }

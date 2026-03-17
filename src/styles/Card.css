@@ -1,0 +1,22 @@
+.card{
+    width: 100%;
+    height: auto;
+
+    overflow: hidden;
+}
+
+.card img{
+    object-fit: contain;
+    border-radius: var(--radius-small);
+
+    transform: translateY(10px) scale(1.2);
+    transition: transform 0.25s ease;
+}
+
+.card:active img{
+    transform: translateX(10px);
+}
+
+.card:hover img{
+    transform: translateY(0) scale(1.2);
+}
