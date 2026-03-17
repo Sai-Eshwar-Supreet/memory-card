@@ -1,63 +1,31 @@
 import { useState } from "react";
-import Card from "./Card";
-
-
-const CARD_COUNT = 10;
-
-function createCards(){
-    return Array.from({length: CARD_COUNT}, () => crypto.randomUUID() );
-}
-
-function shuffle(array){
-    const shuffledArray = [...array];
-
-    for(let i = shuffledArray.length -1; i > 0; i --){
-        const swapIndex = Math.floor(Math.random() * (i + 1));
-
-        [shuffledArray[swapIndex], shuffledArray[i]] = [shuffledArray[i], shuffledArray[swapIndex]];
-    }
-
-    return shuffledArray;
-}
+import { DIFFICULTY } from "./config/GameConfig";
+import { SCENES } from "./config/Scenes";
+import Menu from "./Menu";
+import GamePlay from "./GamePlay";
 
 function Game(){
-    const [cardIds, setCardIds] = useState(createCards());
-    const [selectedCards, setSelectedCards] = useState([]);
+    const [state, setState] = useState({scene: SCENES.MENU, sceneInstanceId: crypto.randomUUID(), difficulty: DIFFICULTY.NORMAL, highScore: 0});
 
-    function toMainMenu(){
-        // for now reset the states to show redirection
-        setCardIds([]);
-        setSelectedCards([]);
-
+    function handleSceneSwitch(scene){
+        setState({...state, scene: scene, sceneInstanceId: crypto.randomUUID()});
+    }
+    
+    function handleDifficultyChange(difficulty){
+        if(difficulty.id === state.difficulty.id ) return;
+        setState({...state, difficulty: difficulty});
+    }
+    
+    function handleScoreUpdate(score){
+        if(score > state.highScore){
+            setState({...state, highScore: score});
+        }
     }
 
-    function handleCardClick(event){
-        const cardId = event.target.dataset.id;
-        if(selectedCards.includes(cardId)){
-            console.log('Game over');
-            toMainMenu();
-            return;
-        }
-        
-        if(selectedCards.length === CARD_COUNT - 1){
-            console.log('You win!');
-            toMainMenu();
-            return;
-        }
-        
-        setCardIds((prev) => shuffle(prev));
-        setSelectedCards(prev => [...prev, cardId]);
-    }
-
-    return (<div>
-                {
-                    cardIds.map((seed) => {
-                        return <Card key={seed} seed={seed} handleCardClick={handleCardClick}/>
-                    })
-                }
-        </div>)
-
-
+    return (<>
+        {(state.scene === SCENES.MENU) && <Menu key={state.sceneInstanceId} difficultyId={state.difficulty.id} onDifficultyChange={handleDifficultyChange} onSwitchScene={handleSceneSwitch}/>}
+        {(state.scene === SCENES.GAMEPLAY) && <GamePlay key={state.sceneInstanceId} highScore={state.highScore} difficulty={state.difficulty} onSwitchScene={handleSceneSwitch} onScoreUpdate={handleScoreUpdate}/>}
+    </>)
 }
 
 export default Game;

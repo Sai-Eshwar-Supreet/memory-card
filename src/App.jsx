@@ -5,7 +5,6 @@ function App() {
 
   return (
     <>
-      <h1>Initialized!</h1>
       <Game />
     </>
   )
