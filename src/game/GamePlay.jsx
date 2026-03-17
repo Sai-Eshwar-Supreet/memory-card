@@ -3,6 +3,7 @@ import Card from './Card';
 import { SCENES } from './config/Scenes';
 import Modal from "./Modal";
 import { shuffle } from './utils/Utils';
+import '../styles/GamePlay.css';
 
 // const DEFAULT_GAMEPLAY_STATE = {
 //     score: 0,
@@ -45,12 +46,15 @@ function GamePlay({difficulty, highScore, onSwitchScene, onScoreUpdate}){
         }
     }
     return (
-        <div>
-            <header>
-                <p>Score: {score}</p>
-                <p>High Score: {highScore}</p>
+        <div className='main-container gameplay-container'>
+            <header className='game-header'>
+                <h1 className='logo-title'>MEMORY CARD</h1>
+                <div className="display-panel horizontal-panel">
+                    <p className='display'><span className="label">Your Score:</span> <span className="value">{score}</span></p>
+                    <p className='display'><span className="label">High Score:</span> <span className="value">{highScore}</span></p>
+                </div>
             </header>
-            <div>
+            <div className='cards-container'>
                 {
                     cards.map((card) => {
                         return <Card key={card.id} id={card.id} handleCardClick={handleCardClick}/>

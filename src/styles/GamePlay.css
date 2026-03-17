@@ -1,0 +1,24 @@
+.display-panel{
+    margin-left: auto;
+    padding: var(--space-medium);
+}
+
+.main-container.gameplay-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.cards-container{
+    flex: 1;
+    
+    display: grid;
+    width: min(100%, 800px);
+
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+
+    gap: var(--space-medium);
+
+    place-items: center;
+    place-content: center;
+}   

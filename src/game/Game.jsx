@@ -3,6 +3,7 @@ import { DIFFICULTY } from "./config/GameConfig";
 import { SCENES } from "./config/Scenes";
 import Menu from "./Menu";
 import GamePlay from "./GamePlay";
+import '../styles/Game.css';
 
 function Game(){
     const [state, setState] = useState({scene: SCENES.MENU, sceneInstanceId: crypto.randomUUID(), difficulty: DIFFICULTY.NORMAL, highScore: 0});

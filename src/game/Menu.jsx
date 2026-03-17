@@ -24,8 +24,10 @@ function Menu({difficultyId, onDifficultyChange, onSwitchScene}){
     }
 
     return (<>
-    <div className="game-container">
-        <h1 className="logo-title">MEMORY CARD</h1>
+    <div className="main-container">
+        <header className="game-header">
+            <h1 className="logo-title">MEMORY CARD</h1>
+        </header>
         <div className="button-panel vertical-panel">
             <select name="difficulty" value={difficultyId} id="difficulty" onChange={handleDifficultyChange}>
                 <option value="easy">EASY</option>

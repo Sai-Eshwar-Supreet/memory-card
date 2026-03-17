@@ -1,0 +1,16 @@
+.game-header{
+    display: flex;
+    width: 100%;
+    
+    justify-content: center;
+    align-items: baseline;
+
+    margin-bottom: var(--space-large);
+}
+
+.logo-title{
+    text-align: center;
+
+    font-size: var(--font-size-extra-large);
+    font-weight: var(--font-weight-semi);
+}
