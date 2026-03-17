@@ -1,0 +1,18 @@
+.game-container{
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-panel{
+    gap: var(--space-medium);
+    width: min(100%, 250px);
+}
+
+.vertical-panel{
+    display: flex;
+    flex-direction: column;
+}

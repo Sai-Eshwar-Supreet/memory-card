@@ -1,4 +1,5 @@
 import { DIFFICULTY } from "./config/GameConfig";
+import '../styles/Menu.css';
 
 function Menu({difficultyId, onDifficultyChange, onSwitchScene}){
 
@@ -23,19 +24,17 @@ function Menu({difficultyId, onDifficultyChange, onSwitchScene}){
     }
 
     return (<>
-    <section>
-        <header>
-            <h1>MEMORY CARD</h1>
-        </header>
+    <div className="game-container">
+        <h1 className="logo-title">MEMORY CARD</h1>
         <div className="button-panel vertical-panel">
             <select name="difficulty" value={difficultyId} id="difficulty" onChange={handleDifficultyChange}>
                 <option value="easy">EASY</option>
                 <option value="normal">NORMAL</option>
                 <option value="hard">HARD</option>
             </select>
-            <button onClick={handleStartClick} >Start Game</button>
+            <button className="cta" onClick={handleStartClick} >START</button>
         </div>
-    </section>
+    </div>
     </>)
 }
 
