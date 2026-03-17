@@ -27,10 +27,18 @@ dialog::backdrop{
 }
 
 .popup-title{
+    width: 100%;
+
+    text-align: center;
+
     font-size: var(--font-size-medium);
     font-weight: var(--font-weight-semi);
-
     margin-bottom: var(--space-medium);
+}
 
-    border-bottom: 2px solid var(--color-neutral-200) ;
+.popup-panel[data-status='success'] .popup-title{
+    color: var(--color-success);
+}
+.popup-panel[data-status='danger'] .popup-title{
+    color: var(--color-danger);
 }

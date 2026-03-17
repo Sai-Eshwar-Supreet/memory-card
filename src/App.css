@@ -14,12 +14,13 @@
 .horizontal-panel{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 
     gap: var(--space-medium);
 }
 
 .main-container{
-    height: 100vh;
+    min-height: 100vh;
 
     display: flex;
     flex-direction: column;
@@ -28,18 +29,34 @@
 }
 
 select, button{
-    padding: var(--space-small);
+    padding: var(--space-small) var(--space-medium);
     text-align: center;
 
-    border:none;
+    border:1px solid var(--color-neutral-150);
     border-radius: var(--radius-small);
 
     box-shadow: var(--shadow-lift-regular);
 
     min-height: 50px;
+    min-width: min(100%, 250px);
 }
 
-button.cta.primary{
+button svg{
+    object-fit: contain;
+    vertical-align: middle;
+    min-width: 20px;
+    transition: fill 0.2s ease;
+}
+
+button:hover svg{
+    fill: var(--color-accent)
+}
+
+select:hover, button:hover{
+    box-shadow: var(--shadow-lift-heavy);
+}
+
+.cta{
     background-color: var(--color-accent);
     color: var(--color-neutral-100);
 }

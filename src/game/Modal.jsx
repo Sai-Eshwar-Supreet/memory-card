@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import '../styles/Modal.css';
 
-function Modal({title, open, children}){
+function Modal({title, open, children, status, onCancel}){
 
     const dialogRef = useRef(null);
 
@@ -19,11 +19,12 @@ function Modal({title, open, children}){
 
     }, [open]);
 
-    function handleCancel(){
-        console.log('Cancelling');
+    function handleCancel(event){
+        event.preventDefault();
+        onCancel();
     }
 
-    return <dialog className="popup-panel" ref={dialogRef} onCancel={handleCancel} >
+    return <dialog data-status={status} className="popup-panel" ref={dialogRef} onCancel={handleCancel} >
         <div className="popup-container">
             <h2 className="popup-title">{title}</h2>
             {children}

@@ -48,9 +48,8 @@ function GamePlay({difficulty, highScore, onSwitchScene, onScoreUpdate}){
     return (
         <div className='main-container gameplay-container'>
             <header className='game-header'>
-                <h1 className='logo-title'>MEMORY CARD</h1>
                 <div className="display-panel horizontal-panel">
-                    <p className='display'><span className="label">Your Score:</span> <span className="value">{score}</span></p>
+                    <p className='display cta'><span className="label">Your Score:</span> <span className="value">{score}</span></p>
                     <p className='display'><span className="label">High Score:</span> <span className="value">{highScore}</span></p>
                 </div>
                 <div className='button-panel horizontal-panel'>
@@ -65,9 +64,9 @@ function GamePlay({difficulty, highScore, onSwitchScene, onScoreUpdate}){
                     })
                 }
             </div>
-            <Modal title={gameOverData.message} open={gameOverData.isGameOver}>
+            <Modal title={gameOverData.message} status={gameOverData.isGameWon? 'success': 'danger'} open={gameOverData.isGameOver} onCancel={() => onSwitchScene(SCENES.MENU) }>
                 <div className="display-panel horizontal-panel">
-                    <p className='display'><span className="label">Your Score:</span> <span className="value">{score}</span></p>
+                    <p className='display cta'><span className="label">Your Score:</span> <span className="value">{score}</span></p>
                     <p className='display'><span className="label">High Score:</span> <span className="value">{highScore}</span></p>
                 </div>
                 <div className='button-panel horizontal-panel'>

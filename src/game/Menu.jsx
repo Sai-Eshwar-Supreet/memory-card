@@ -41,7 +41,7 @@ function Menu({difficultyId, onDifficultyChange, onSwitchScene}){
             </select>
             <button onClick={() => setOpenHelp(true)}>HELP</button>
         </div>
-        <Modal title='Rules' open={openHelp}>
+        <Modal title='Rules' open={openHelp} onCancel={() => setOpenHelp(false)}>
             <p>Don't click the same card twice.</p>
             <button onClick={() => setOpenHelp(false)}>Close</button>
         </Modal>
