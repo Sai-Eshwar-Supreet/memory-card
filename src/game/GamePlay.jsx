@@ -16,14 +16,13 @@ function createCard(id = crypto.randomUUID(), isSelected = false){
 }
 
 function GamePlay({difficulty, highScore, onSwitchScene, onScoreUpdate}){
-    const [cards, setCard] = useState(Array.from({length: difficulty.cardCount}, () => createCard()));
+    const [cards, setCards] = useState(Array.from({length: difficulty.cardCount}, () => createCard()));
     const [score, setScore] = useState(0);
     const[gameOverData, setGameOverData] = useState({isGameOver: false, isGameWon: false, message: null})
     
-    function handleCardClick(event){
-        const cardId = event.target.dataset.id;
-
-        const card = cards.find(card => card.id === cardId);
+    function handleCardClick(cardId){
+        const cardIndex =  cards.findIndex(card => card.id === cardId);
+        const card = cards[cardIndex];
 
         if(!card) return;
 
@@ -32,13 +31,14 @@ function GamePlay({difficulty, highScore, onSwitchScene, onScoreUpdate}){
             return;
         }
         
-        card.isSelected = true;
         const newScore = score + 1;
         setScore(newScore);
         onScoreUpdate(newScore);
         
-
-        setCard(shuffle(cards));
+        
+        const newCards = [...cards];
+        newCards[cardIndex] = createCard( cardId, true);
+        setCards(shuffle(newCards));
 
         if(newScore === difficulty.cardCount){
             setGameOverData({isGameOver: true, isGameWon: true, message: 'Victory!'});
